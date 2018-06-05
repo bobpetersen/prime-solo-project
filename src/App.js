@@ -5,12 +5,16 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
+// import WaterLevel from './components/WaterLevel/WaterLevel';
+import WaterTemp from './components/WaterTemp/WaterTemp';
+// import DataPage from './components/DataPage/DataPage';
 
 import './styles/main.css';
 
@@ -36,6 +40,10 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
+        <Route
+          path="/temps"
+          component={WaterTemp}
+        />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 
@@ -44,4 +52,8 @@ const App = () => (
   </div>
 );
 
-export default App;
+const mapReduxStateToProps = reduxState => ({
+  reduxState
+});
+
+export default connect(mapReduxStateToProps)(App);
