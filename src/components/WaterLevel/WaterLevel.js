@@ -1,22 +1,66 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import Nav from '../../components/Nav/Nav';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
-const mapStateToProps = state => ({
-    level: state.level,
+
+const mapStateToProps = reduxState => ({
+    reduxState,
 });
 
+const CustomTableCell = withStyles(theme => ({
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    body: {
+        fontSize: 14,
+    },
+}))(TableCell);
+
 class WaterLevel extends Component {
+
+    componentDidMount() {
+        // use component did mount to dispatch an action to temps API
+        this.props.dispatch({ type: 'FETCH_LEVEL' });
+    }
     render() {
+
         return(
             <div>
-                <h3>This is the water level page</h3>
-                <ul>
-                   
-                </ul>
-                <pre>{JSON.stringify(this.props.reduxState.waterLevel)}</pre>
+                <Nav />
+                <Paper>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <CustomTableCell>Date</CustomTableCell>
+                                <CustomTableCell numeric>Water Temp</CustomTableCell>
+                                <CustomTableCell numeric>Water Level</CustomTableCell>
+                                <CustomTableCell numeric>Air Temp</CustomTableCell>
+                                <CustomTableCell numeric>Humidity</CustomTableCell>
+                            </TableRow>
+                        </TableHead >
+                        <TableBody>
+                            {this.props.reduxState.level.levelReducer.map(levels => {
+                                return (<TableRow key={levels.id}>
+                                    <CustomTableCell>{levels.tstz}</CustomTableCell>
+                                    <CustomTableCell numeric></CustomTableCell>
+                                    <CustomTableCell numeric>{levels.level}</CustomTableCell>
+                                    <CustomTableCell numeric></CustomTableCell>
+                                    <CustomTableCell numeric></CustomTableCell>
+                                </TableRow>
+                                );
+                            })}
+                        </TableBody>
+                    </Table>
+                </Paper>
+                {/* <pre>{JSON.stringify([this.props.reduxState.level.levelReducer])}</pre> */}
             </div>
         );
 

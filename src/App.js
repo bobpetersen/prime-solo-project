@@ -12,15 +12,16 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
-// import WaterLevel from './components/WaterLevel/WaterLevel';
+import WaterLevel from './components/WaterLevel/WaterLevel';
 import WaterTemp from './components/WaterTemp/WaterTemp';
 // import DataPage from './components/DataPage/DataPage';
 
 import './styles/main.css';
 
 const App = () => (
+  
   <div>
-    <Header title="Project Base" />
+    <Header title="AquaSense" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -43,6 +44,10 @@ const App = () => (
         <Route
           path="/temps"
           component={WaterTemp}
+        />
+        <Route
+          path="/level"
+          component={WaterLevel}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

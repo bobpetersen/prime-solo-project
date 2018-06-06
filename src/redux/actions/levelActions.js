@@ -1,0 +1,4 @@
+export const LEVEL_ACTIONS = {
+    FETCH_LEVEL: 'FETCH_LEVEL',
+    SET_LEVEL: 'SET_LEVEL'
+};

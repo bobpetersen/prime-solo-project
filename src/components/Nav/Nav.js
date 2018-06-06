@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './nav.css'
 
 const Nav = () => (
   <div className="navbar">
@@ -16,8 +17,13 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/temp">
-            Info Page
+          <Link to="/temps">
+            Data Page
+          </Link>
+        </li>
+        <li>
+          <Link to="/level">
+            Water Level
           </Link>
         </li>
       </ul>

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { TEMP_ACTIONS } from '../actions/tempActions';
+import { LEVEL_ACTIONS } from '../actions/levelActions';
 
-const tempReducer = (state = [], action) => {
+const levelReducer = (state = [], action) => {
     switch (action.type) {
-        case TEMP_ACTIONS.SET_TEMP:
+        case LEVEL_ACTIONS.SET_LEVEL:
             return action.payload
         default:
             return state;
@@ -13,5 +13,5 @@ const tempReducer = (state = [], action) => {
 
 
 export default combineReducers({
-    tempReducer,
+    levelReducer,
 });
