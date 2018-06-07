@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import Nav from '../../components/Nav/Nav';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -8,6 +9,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import 'typeface-roboto'
 
 
 const mapStateToProps = reduxState => ({
@@ -49,7 +51,7 @@ class WaterLevel extends Component {
                         <TableBody>
                             {this.props.reduxState.level.levelReducer.map(levels => {
                                 return (<TableRow key={levels.id}>
-                                    <CustomTableCell>{levels.tstz}</CustomTableCell>
+                                    <CustomTableCell>{moment(levels.tstz).format('ddd M[/]D [at] h:mm')}</CustomTableCell>
                                     <CustomTableCell numeric></CustomTableCell>
                                     <CustomTableCell numeric>{levels.level}</CustomTableCell>
                                     <CustomTableCell numeric></CustomTableCell>

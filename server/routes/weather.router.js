@@ -3,18 +3,12 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
-const axios = require('axios');
+
 const router = express.Router();
-
-
-// Every minute, request data from the photon core
-// TODO: Move access token to .env file
-
 
 router.get('/', (req, res) => {
     console.log('Get got got');
-    const queryText = `SELECT * FROM "water_temp"
-                       ORDER BY "tstz" DESC;`;
+    const queryText = `SELECT * FROM "water_level";`;
     pool.query(queryText)
         .then((results) => {
             res.send(results.rows);
@@ -25,8 +19,3 @@ router.get('/', (req, res) => {
         }
         )
 });
-
-
-
-
-module.exports = router;

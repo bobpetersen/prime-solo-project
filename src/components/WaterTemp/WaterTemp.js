@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import Nav from '../../components/Nav/Nav';
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -9,6 +10,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import 'typeface-roboto'
+// import WaterLevel from '../WaterLevel/WaterLevel';
+
 
 
 
@@ -42,6 +46,8 @@ const CustomTableCell = withStyles(theme => ({
 //     },
 // });
 
+
+
 class WaterTemp extends Component {
 
     componentDidMount() {
@@ -53,6 +59,9 @@ class WaterTemp extends Component {
     render() {
 
         return (
+
+
+            
             <div>
                 <Nav />
                 <Paper>
@@ -69,7 +78,7 @@ class WaterTemp extends Component {
                         <TableBody>
                             {this.props.reduxState.temp.tempReducer.map(temps => {
                                 return (<TableRow key={temps.id}>
-                                    <CustomTableCell>{temps.tstz}</CustomTableCell>
+                                    <CustomTableCell>{moment(temps.tstz).format('ddd M[/]D [at] h:mm')}</CustomTableCell>
                                     <CustomTableCell numeric>{temps.temp}</CustomTableCell>
                                     <CustomTableCell numeric></CustomTableCell>
                                     <CustomTableCell numeric></CustomTableCell>

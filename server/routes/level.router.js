@@ -8,7 +8,8 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     console.log('Get got got');
-    const queryText = `SELECT * FROM "water_level";`;
+    const queryText = `SELECT * FROM "water_level"
+                       ORDER BY "tstz" DESC;`;
     pool.query(queryText)
         .then((results) => {
             res.send(results.rows);

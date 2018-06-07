@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './nav.css'
+import 'typeface-roboto'
+
 
 const Nav = () => (
   <div className="navbar">
@@ -18,7 +20,7 @@ const Nav = () => (
         </li>
         <li>
           <Link to="/temps">
-            Data Page
+            Water Temp
           </Link>
         </li>
         <li>
@@ -26,9 +28,16 @@ const Nav = () => (
             Water Level
           </Link>
         </li>
+        <li>
+          <Link to="/data">
+            Data Page
+          </Link>
+        </li>
       </ul>
     </div>
   </div>
 );
+
+
 
 export default Nav;

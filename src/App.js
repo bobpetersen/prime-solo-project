@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import 'typeface-roboto'
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
@@ -14,7 +14,7 @@ import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
 import WaterLevel from './components/WaterLevel/WaterLevel';
 import WaterTemp from './components/WaterTemp/WaterTemp';
-// import DataPage from './components/DataPage/DataPage';
+import DataPage from './components/DataPage/DataPage';
 
 import './styles/main.css';
 
@@ -48,6 +48,10 @@ const App = () => (
         <Route
           path="/level"
           component={WaterLevel}
+        />
+        <Route
+          path="/data"
+          component={DataPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

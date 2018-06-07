@@ -3,6 +3,6 @@ export const TEMP_ACTIONS = {
     SET_TEMP: 'SET_TEMP'
 };
 
-// export function getTemps() {
-//     return { type: TEMP_ACTIONS.FETCH_TEMP };
-// }
+export function getTemps() {
+    return { type: TEMP_ACTIONS.FETCH_TEMP };
+}
