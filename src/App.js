@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect, Switch,} from 'react-router-dom';
 import { connect } from 'react-redux';
 import 'typeface-roboto'
 import Header from './components/Header/Header';
@@ -15,7 +10,6 @@ import InfoPage from './components/InfoPage/InfoPage';
 import WaterLevel from './components/WaterLevel/WaterLevel';
 import WaterTemp from './components/WaterTemp/WaterTemp';
 import DataPage from './components/DataPage/DataPage';
-
 import './styles/main.css';
 
 const App = () => (

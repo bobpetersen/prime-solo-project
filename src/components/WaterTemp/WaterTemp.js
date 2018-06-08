@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Nav from '../../components/Nav/Nav';
-// import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,9 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import 'typeface-roboto'
-// import WaterLevel from '../WaterLevel/WaterLevel';
-
-
+import { Line, Bar, Radar } from 'react-chartjs-2';
 
 
 const mapStateToProps = reduxState => ({
@@ -30,39 +27,18 @@ const CustomTableCell = withStyles(theme => ({
     },
 }))(TableCell);
 
-// const styles = theme => ({
-//     root: {
-//         width: '100%',
-//         marginTop: theme.spacing.unit * 3,
-//         overflowX: 'auto',
-//     },
-//     table: {
-//         minWidth: 700,
-//     },
-//     row: {
-//         '&:nth-of-type(odd)': {
-//             backgroundColor: theme.palette.background.default,
-//         },
-//     },
-// });
-
-
 
 class WaterTemp extends Component {
 
     componentDidMount() {
         // use component did mount to dispatch an action to temps API
         this.props.dispatch({ type: 'FETCH_TEMP' });
-
     }
-
     render() {
-
         return (
 
-
-            
             <div>
+            
                 <Nav />
                 <Paper>
                     <Table>
@@ -92,7 +68,6 @@ class WaterTemp extends Component {
                 {/* {this.props.reduxState.temp.tempReducer.map(temps => <li key={temps.id}>{temps.temp}</li>)} */}
                 {/* <pre>{JSON.stringify([this.props.reduxState.temp.tempReducer])}</pre> */}
             </div>
-
         );
     }
 
