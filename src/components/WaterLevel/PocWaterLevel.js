@@ -10,7 +10,7 @@ const mapStateToProps = reduxState => ({
   reduxState,
 });
 
-class WaterTemp extends Component {
+class PocWaterLevel extends Component {
   constructor(props) {
     super(props);
 
@@ -20,54 +20,47 @@ class WaterTemp extends Component {
   }
 
   componentWillMount() {
-    this.fetchPondTemps();
+    this.fetchPondLevel();
     // this.props.dispatch({ type: 'FETCH_TEMP' });
   }
 
-  // static defaultProps = {
-  //   displayTitle: true,
-  //   displayLegend: true,
-  //   legendPosition: 'bottom',
-  // }
-
-  fetchPondTemps = () => {
+  fetchPondLevel = () => {
     axios({
       method: 'GET',
-      url: `/api/temps`
+      url: `/api/level`
     })
       .then((response) => {
         // alert(response.data.map(temps => temps.tstz))
         this.setState({
           chartData: {
-            labels: response.data.map((temps) => {
-              let tempDate = moment(temps.dt).format('ddd M[/]D');
-              return tempDate;
+            labels: response.data.map((levels) => {
+              let levelDate = moment(levels.dt).format('ddd M[/]D');
+              return levelDate;
             }),
-            datasets: [{
-              label: 'Pond Temps',
-              backgroundColor: [
-                'rgba(53, 143, 255, 0.5)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-              ],
-              borderColor: [
-                'rgba(219, 52, 10, 1)',
-                'rgba(255,99,132,1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 2,
-              label: 'Pond Temps',
-              data: response.data.map(temps => temps.avg_temp),
-            }]
+            datasets: [
+              {
+                backgroundColor: [
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255,99,132,1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 2,
+                label: 'Pond Levels',
+                data: response.data.map(levels => levels.avg_level),
+              }
+            ]
           }
-          
         });
         // alert(response.data.map(temps => temps.tstz))
       })
@@ -89,7 +82,7 @@ class WaterTemp extends Component {
               },
               title: {
                 display: "Title",
-                text: 'Water Temperature',
+                text: 'Water Level',
                 fontSize: 35,
               },
               legend: {
@@ -100,9 +93,9 @@ class WaterTemp extends Component {
               scales: {
                 yAxes: [{
                   ticks: {
-                    min: 50,
-                    max: 80,
-                    stepSize: 1,
+                    min: 30,
+                    max: 100,
+                    stepSize: 5,
                   }
                 }]
               }
@@ -115,4 +108,4 @@ class WaterTemp extends Component {
   }
 }
 
-export default connect(mapStateToProps)(WaterTemp);
+export default connect(mapStateToProps)(PocWaterLevel);

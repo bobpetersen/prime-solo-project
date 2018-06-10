@@ -8,8 +8,10 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     console.log('Get got got');
-    const queryText = `SELECT * FROM "water_level"
-                       ORDER BY "tstz" DESC;`;
+    const queryText = `SELECT CAST("tstz" AS "date") AS "dt", "avg"("level") AS "avg_level"
+                       FROM "water_level"
+                       GROUP BY CAST("tstz" AS "date")
+                       ORDER BY CAST("tstz" AS "date") ASC;`;
     pool.query(queryText)
         .then((results) => {
             res.send(results.rows);

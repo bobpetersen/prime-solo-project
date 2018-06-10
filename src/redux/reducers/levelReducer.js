@@ -10,8 +10,6 @@ const levelReducer = (state = [], action) => {
     }
 };
 
-
-
 export default combineReducers({
     levelReducer,
 });
