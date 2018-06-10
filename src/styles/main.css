@@ -2,16 +2,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-.instructions h1 {
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.instructions {
-    background-color: #00acb0;
-    padding: 5px;
-    color: #ece7e7;
-}
 
 form {
     background-color: #dbd5d5;
@@ -45,5 +35,5 @@ input[type="submit"] {
 
 .message:nth-child(even) {
     background-color: #f8f8f8;
-}
+} 
 

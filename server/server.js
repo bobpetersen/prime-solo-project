@@ -41,10 +41,9 @@ function requestDataFromCore() {
       //   }
       // }
       const queryText = `INSERT INTO "water_temp" ("temp","tstz")
-                            VALUES ($1, now());`;
+                         VALUES ($1, now());`;
       pool.query(queryText, [parseFloat(response.data.result)])
         .then((results) => {
-          
           console.log(results);
         })
         .catch((error) => {

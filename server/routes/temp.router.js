@@ -13,8 +13,9 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     console.log('Get got got');
-    const queryText = `SELECT * FROM "water_temp"
-                       ORDER BY "tstz" DESC;`;
+    const queryText = `SELECT "temp", "tstz" FROM "water_temp"
+                       ORDER BY "tstz" DESC
+                       LIMIT 10;`;
     pool.query(queryText)
         .then((results) => {
             res.send(results.rows);

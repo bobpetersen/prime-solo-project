@@ -15,7 +15,7 @@ import './styles/main.css';
 const App = () => (
   
   <div>
-    <Header title="AquaSense" />
+    <Header title="AquaSense"/>
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -43,10 +43,10 @@ const App = () => (
           path="/level"
           component={WaterLevel}
         />
-        <Route
+        {/* <Route
           path="/data"
           component={DataPage}
-        />
+        /> */}
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 

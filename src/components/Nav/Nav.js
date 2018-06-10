@@ -4,8 +4,11 @@ import './nav.css'
 import 'typeface-roboto'
 
 
+
 const Nav = () => (
-  <div className="navbar">
+  
+
+<div className="navbar">
     <div>
       <ul>
         <li>
