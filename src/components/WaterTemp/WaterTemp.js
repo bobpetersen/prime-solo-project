@@ -24,19 +24,13 @@ class WaterTemp extends Component {
     // this.props.dispatch({ type: 'FETCH_TEMP' });
   }
 
-  // static defaultProps = {
-  //   displayTitle: true,
-  //   displayLegend: true,
-  //   legendPosition: 'bottom',
-  // }
-
   fetchPondTemps = () => {
     axios({
       method: 'GET',
       url: `/api/temps`
     })
       .then((response) => {
-        // alert(response.data.map(temps => temps.tstz))
+        // console.log(response.data.map(temps => temps.tstz))
         this.setState({
           chartData: {
             labels: response.data.map((temps) => {
@@ -46,30 +40,20 @@ class WaterTemp extends Component {
             datasets: [{
               label: 'Pond Temps',
               backgroundColor: [
+                'rgba(14, 28, 51, 0.6)',
                 'rgba(53, 143, 255, 0.5)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
               ],
               borderColor: [
+                'rgba(255, 204, 2, 1)',
                 'rgba(219, 52, 10, 1)',
-                'rgba(255,99,132,1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
               ],
               borderWidth: 2,
-              label: 'Pond Temps',
+              // label: 'Pond Temps',
               data: response.data.map(temps => temps.avg_temp),
             }]
           }
-          
         });
-        // alert(response.data.map(temps => temps.tstz))
+        // console.log(response.data.map(temps => temps.tstz))
       })
       .catch((error) => {
         console.log(error);
@@ -90,7 +74,8 @@ class WaterTemp extends Component {
               title: {
                 display: "Title",
                 text: 'Water Temperature',
-                fontSize: 35,
+                fontSize: 50,
+                fontColor: 'rgba(255, 204, 2, 1)',
               },
               legend: {
                 display: true,
@@ -100,11 +85,22 @@ class WaterTemp extends Component {
               scales: {
                 yAxes: [{
                   ticks: {
+                    fontColor: 'rgba(255, 204, 2, 1)',
+                    fontSize: 15,
                     min: 50,
                     max: 80,
-                    stepSize: 1,
+                    stepSize: 2,
                   }
-                }]
+                }],
+                xAxes: [{
+                  ticks: {
+                    fontSize: 15,
+                    fontColor: 'rgba(255, 204, 2, 1)',
+                    min: 30,
+                    max: 100,
+                    stepSize: 5,
+                  }
+                }],
               }
             }}
           />

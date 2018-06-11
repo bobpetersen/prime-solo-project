@@ -1,4 +1,6 @@
 body {
+    background-image: url(fish.png);
+    background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 

@@ -7,9 +7,9 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
-import PocWaterLevel from './components/WaterLevel/PocWaterLevel';
+import WaterLevel from './components/WaterLevel/WaterLevel';
 import WaterTemp from './components/WaterTemp/WaterTemp';
-import DataPage from './components/DataPage/DataPage';
+// import DataPage from './components/DataPage/DataPage';
 import './styles/main.css';
 
 const App = () => (
@@ -41,7 +41,7 @@ const App = () => (
         />
         <Route
           path="/level"
-          component={PocWaterLevel}
+          component={WaterLevel}
         />
         {/* <Route
           path="/data"

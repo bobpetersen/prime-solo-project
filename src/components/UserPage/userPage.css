@@ -1,0 +1,22 @@
+.pondCard {
+    width: 300;
+    padding: 50px;
+    max-height: 800px;
+    display: inline-block;
+    margin: 20px;
+    border: solid 2px #222;
+    padding: 10px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline-end: 50px;
+}
+
+.cardTypography {
+    color: red;
+    text-align: center;
+}
+
