@@ -7,9 +7,9 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    console.log('Get got got');
+    console.log('Get got level');
     const queryText = `SELECT CAST("tstz" AS "date") AS "dt", "avg"("level") AS "avg_level"
-                       FROM "water_level"
+                       FROM "temp_level"
                        GROUP BY CAST("tstz" AS "date")
                        ORDER BY CAST("tstz" AS "date") ASC;`;
     pool.query(queryText)

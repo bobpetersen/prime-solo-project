@@ -1,75 +1,93 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import moment from 'moment';
-// import Nav from '../../components/Nav/Nav';
-// // import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Nav from '../../components/Nav/Nav';
+// import PropTypes from 'prop-types';
 // import { withStyles } from '@material-ui/core/styles';
-// import Table from '@material-ui/core/Table';
-// import TableBody from '@material-ui/core/TableBody';
-// import TableCell from '@material-ui/core/TableCell';
-// import TableHead from '@material-ui/core/TableHead';
-// import TableRow from '@material-ui/core/TableRow';
-// import Paper from '@material-ui/core/Paper'
-// // import temps from '../WaterTemp/WaterTemp';
-// import levels from '../WaterLevel/WaterLevel';
+import GridLayout from 'react-grid-layout';
+// import { Responsive as ResponsiveGridLayout } from 'react-grid-layout';
+import './DataPage.css';
+import './resizable-styles.css';
+// import WaterLevel from '../../components/WaterLevel/WaterLevel';
+import axios from 'axios';
 
 
 
+const mapStateToProps = reduxState => ({
+  reduxState,
+});
+
+class DataPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      waterData: '',
+    }
+  }
+
+  componentWillMount() {
+    this.fetchPondLevel();
+    // this.props.dispatch({ type: 'FETCH_LEVEL' });
+  }
+
+  fetchPondLevel = () => {
+    axios({
+      method: 'GET',
+      url: `/api/level`
+    })
+      .then((response) => {
+        const waterAvg = response.data[0].avg_level
+        this.setState({
+          waterData: waterAvg,
+        });
+        console.log(response.data[0].avg_level)
+
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  render() {
+    const layout = [
+      { i: 'a', x: 3, y: 3, w: 2, h: 3 },
+      { i: 'b', x: 0, y: 0, w: 3, h: 3 },
+      { i: 'c', x: 4, y: 0, w: 4, h: 2 },
+      { i: 'd', x: 4, y: 0, w: 4, h: 2 },
+      { i: 'e', x: 0, y: 0, w: 2, h: 4 },
+      { i: 'f', x: 4, y: 0, w: 2, h: 4 },
+      { i: 'g', x: 4, y: 0, w: 4, h: 2 },
+      { i: 'h', x: 4, y: 0, w: 4, h: 2 },
+    ];
 
 
 
-// const mapStateToProps = reduxState => ({
-//     reduxState,
-// });
+    return (
+    <div>
+        <div>
+          <Nav />
+        </div>
+      
+        <GridLayout className="layout" layout={layout} cols={12} rowHeight={30} width={1400}>
+          <div key="a">
+          <p>
+          TESTING
+          </p>
+          </div>
+          <div key="b">Latest Average Water Level <p>{parseFloat(this.state.waterData)}</p></div>
+          <div key="c">c</div>
+          <div key="d">d</div>
+          <div key="e">e</div>
+          <div key="f">f</div>
+          <div key="g">g</div>
+          <div key="h">h</div>
+          <div>
 
-// const CustomTableCell = withStyles(theme => ({
-//     head: {
-//         backgroundColor: theme.palette.common.black,
-//         color: theme.palette.common.white,
-//     },
-//     body: {
-//         fontSize: 14,
-//     },
-// }))(TableCell);
+            </div>
+        </GridLayout>
+     </div>
+    );
+  }
 
-// class DataPage extends Component {
+}
 
-
-//     render() {
-
-//         return (
-//             <div>
-//                 <Nav />
-//                 <Paper>
-//                     <Table>
-//                         <TableHead>
-//                             <TableRow>
-//                                 <CustomTableCell>Date</CustomTableCell>
-//                                 <CustomTableCell numeric>Water Temp</CustomTableCell>
-//                                 <CustomTableCell numeric>Water Level</CustomTableCell>
-//                                 <CustomTableCell numeric>Air Temp</CustomTableCell>
-//                                 <CustomTableCell numeric>Humidity</CustomTableCell>
-//                             </TableRow>
-//                         </TableHead >
-//                         <TableBody>
-//                             <TableRow>
-//                                 <CustomTableCell>{moment(temps.tstz).format('ddd M[/]D [at] h:mm')}</CustomTableCell>
-//                                 <CustomTableCell numeric>{temps.temp}</CustomTableCell>
-//                                 <CustomTableCell numeric>{levels.level}</CustomTableCell>
-//                                 <CustomTableCell numeric></CustomTableCell>
-//                                 <CustomTableCell numeric></CustomTableCell>
-//                             </TableRow>
-//                         </TableBody>
-//                     </Table>
-//                 </Paper>
-//                 {/* {this.props.reduxState.temp.tempReducer.map(temps => <li key={temps.id}>{temps.temp}</li>)} */}
-//                 {/* <pre>{JSON.stringify([this.props.reduxState.temp.tempReducer])}</pre> */}
-//             </div>
-
-//         );
-//     }
-
-// }
-
-
-// export default connect(mapStateToProps)(DataPage);
+export default connect(mapStateToProps)(DataPage);

@@ -3,6 +3,6 @@ export const LEVEL_ACTIONS = {
     SET_LEVEL: 'SET_LEVEL'
 };
 
-export function getLevels() {
-    return { type: LEVEL_ACTIONS.FETCH_LEVEL };
-}
+// export function getLevels() {
+//     return { type: LEVEL_ACTIONS.FETCH_LEVEL };
+// }

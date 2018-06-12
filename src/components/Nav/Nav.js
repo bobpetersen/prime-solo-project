@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './nav.css'
 import 'typeface-roboto'
+import { Button } from 'react-bootstrap';
+import { triggerLogout } from '../../redux/actions/loginActions';
 
 
+  
+  // this.props.history.push('home');
 
-const Nav = () => (
+const Nav = (props) => (
   
 
 <div className="navbar">
@@ -36,6 +41,16 @@ const Nav = () => (
             Data Page
           </Link>
         </li>
+        <div className="pull-right">
+        <li>
+          <Button className="navBarButton"
+            variant="contained" color="default"
+              onClick={() => props.dispatch(triggerLogout())}
+          >
+            Log Out
+          </Button>
+        </li>
+        </div>
       </ul>
     </div>
   </div>
@@ -43,4 +58,4 @@ const Nav = () => (
 
 
 
-export default Nav;
+export default connect()(Nav);

@@ -30,6 +30,7 @@ class WaterTemp extends Component {
       url: `/api/temps`
     })
       .then((response) => {
+        //drop axios here
         // console.log(response.data.map(temps => temps.tstz))
         this.setState({
           chartData: {
@@ -37,7 +38,8 @@ class WaterTemp extends Component {
               let tempDate = moment(temps.dt).format('ddd M[/]D');
               return tempDate;
             }),
-            datasets: [{
+            datasets: [
+              {
               label: 'Pond Temps',
               backgroundColor: [
                 'rgba(14, 28, 51, 0.6)',
@@ -48,9 +50,9 @@ class WaterTemp extends Component {
                 'rgba(219, 52, 10, 1)',
               ],
               borderWidth: 2,
-              // label: 'Pond Temps',
               data: response.data.map(temps => temps.avg_temp),
-            }]
+            },
+          ]
           }
         });
         // console.log(response.data.map(temps => temps.tstz))
@@ -105,7 +107,7 @@ class WaterTemp extends Component {
             }}
           />
         </div>
-        {/* <pre>{JSON.stringify([this.props.reduxState.temp.tempReducer])}</pre> */}
+        {/* <pre>{JSON.stringify([this.state.chartData])}</pre> */}
       </div>
     );
   }

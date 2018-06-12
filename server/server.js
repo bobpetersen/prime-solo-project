@@ -25,7 +25,9 @@ const cron = require('node-cron');
 function requestDataFromCore() {
   console.log('running a task every minute');
   axios.get(`https://api.particle.io/v1/devices/${process.env.DEVICE_ID}/szInfo?access_token=${process.env.AUTH_TOKEN}`).then((response) => {
-      console.log(response.data);
+      
+    const myData = JSON.parse(response.data.result); // turns your string into an Object
+    console.log('HELLO LOOK AT ME', myData);
       // SAMPLE RESPONSE
       // {
       //   "cmd": "VarReturn",
@@ -40,9 +42,11 @@ function requestDataFromCore() {
       //     "product_id": 6
       //   }
       // }
-      const queryText = `INSERT INTO "water_temp" ("temp","tstz")
-                         VALUES ($1, now());`;
-      pool.query(queryText, [parseFloat(response.data.result)])
+      console.log(myData.temp);
+      
+    const queryText = `INSERT INTO "temp_level" ("temp", "level", "tstz")
+                         VALUES ($1, $2, now());`;
+    pool.query(queryText, [parseInt(myData.temp), parseInt(myData.level +7)])
         .then((results) => {
           console.log(results);
         })

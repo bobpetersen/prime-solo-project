@@ -1,32 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import Nav from '../../components/Nav/Nav';
-
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
-import { Line } from 'react-chartjs-2';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Nav from '../../components/Nav/Nav';
+import Grid from '@material-ui/core/Grid';
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+import { Button } from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import Image from '../Images/pond-one.png';
 import Pic from '../Images/pond_two.png';
-import './userPage.css'
+
 
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
+const styles = {
+  card: {
+    width: 300,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+
+};
+
 
 class UserPage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       chartData: {},
     }
@@ -48,21 +58,19 @@ class UserPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+    // const { spacing } = this.state;
+
     let content = null;
+
     if (this.props.user.userName) {
       content = (
         <div>
           <h1
             id="welcome"
           >
-            Welcome, { this.props.user.userName }!
+            Welcome, {this.props.user.userName}!
           </h1>
-          <Button
-            variant="contained" color="default"
-            onClick={this.logout}
-          >
-            Log Out
-          </Button>
         </div>
       );
     }
@@ -70,134 +78,72 @@ class UserPage extends Component {
     return (
       <div>
         <Nav />
-        { content }
-        <div className="wrapper">
-        <div>
-            <Card className="pondCard">
-            <CardMedia
-                style={{ height: "200px", width:"400px" }}
+        {content}
+        <Grid direction='row' spacing='48' container className={classes.root} >
+          <Grid item lg={3}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.media}
                 image={Image}
-            />
-            <CardContent>
-              <Typography className="cardTypography" gutterBottom variant="display3">
-                Water Temperature
-          </Typography>
-                <Line
-                  data={this.state.chartData}
-                  options={{
-                    tooltips: {
-
-                    },
-                    title: {
-                      display: "Title",
-                      text: 'Water Temperature',
-                      fontSize: 50,
-                      fontColor: 'rgba(255, 204, 2, 1)',
-                    },
-                    legend: {
-                      display: true,
-                      position: 'bottom',
-                    },
-                    maintainAspectRatio: false,
-                    scales: {
-                      yAxes: [{
-                        ticks: {
-                          fontColor: 'rgba(255, 204, 2, 1)',
-                          fontSize: 15,
-                          min: 50,
-                          max: 80,
-                          stepSize: 2,
-                        }
-                      }],
-                      xAxes: [{
-                        ticks: {
-                          fontSize: 15,
-                          fontColor: 'rgba(255, 204, 2, 1)',
-                          min: 30,
-                          max: 100,
-                          stepSize: 5,
-                        }
-                      }],
-                    }
-                  }}
-                />
-            </CardContent>
-            <CardActions>
-              <Button size="small" color="primary">
-                Share
-          </Button>
-              <Button size="small" color="primary">
-                Learn More
-          </Button>
-            </CardActions>
-          </Card>
-        </div>
-        <div>
-          <Card className="pondCard">
-            <CardMedia
-                style={{ height: "200px", width: "400px"  }}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="display3">
+                  Water Temperature
+                </Typography>
+                <Typography component="p">
+                  Lizards are a widespread group
+                  of squamate reptiles, with over 6,000 species,
+                  ranging
+                  across all continents except Antarctica
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small" color="primary">
+                  Share
+                </Button>
+                <Button size="small" color="primary">
+                  Learn More
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item lg={3}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.media}
                 image={Pic}
-            />
-            <CardContent>
-                <Typography className="cardTypography"  gutterBottom variant="display3">
-                Water Level
-          </Typography>
-                <Line
-                  data={this.state.chartData}
-                  options={{
-                    tooltips: {
-
-                    },
-                    title: {
-                      display: "Title",
-                      text: 'Water Level',
-                      fontSize: 50,
-                      fontColor: 'rgba(255, 204, 2, 1)',
-                    },
-                    legend: {
-                      display: true,
-                      position: 'bottom',
-                    },
-                    maintainAspectRatio: false,
-                    scales: {
-                      xAxes: [{
-                        ticks: {
-                          fontSize: 15,
-                          fontColor: 'rgba(255, 204, 2, 1)',
-                          min: 30,
-                          max: 100,
-                          stepSize: 5,
-                        }
-                      }],
-                      yAxes: [{
-                        ticks: {
-                          fontSize: 15,
-                          fontColor: 'rgba(255, 204, 2, 1)',
-                          min: 30,
-                          max: 100,
-                          stepSize: 5,
-                        }
-                      }]
-                    }
-                  }}
-                />
-            </CardContent>
-            <CardActions>
-              <Button size="small" color="primary">
-                Share
-          </Button>
-              <Button size="small" color="primary">
-                Learn More
-          </Button>
-            </CardActions>
-          </Card>
-          </div>
-        </div>
+              />
+              <CardContent>
+                <Typography gutterBottom variant="display3">
+                  Water Level
+                </Typography>
+                <Typography component="p">
+                  Lizards are a widespread group
+                  of squamate reptiles, with over 6,000 species,
+                  ranging
+                  across all continents except Antarctica
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small" color="primary">
+                  Share
+                  </Button>
+                <Button size="small" color="primary">
+                  Learn More
+                  </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
       </div>
-    );
+    )
   }
 }
 
-// this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+
+Card.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(UserPage));
 

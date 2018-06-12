@@ -3,19 +3,23 @@
   background-color: rgba(0, 17, 43, 1);
   width: 100%;
   border-radius: 0px;
-
+  padding-left: 20px;
 }
 
 .instructions h1 {
-    font-size: 24px;
+    font-size: 40px;
     font-weight: 700;
+    padding-left: 20px;
+
 }
 
 .instructions {
     background-color: #000816;
-    padding: 5px;
+    padding: 10px;
     color: #ece7e7;
+    width:100%;
 }
+
 
 ul {
     list-style-type: none;

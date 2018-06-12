@@ -3,7 +3,10 @@ body {
     background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
-
+#react-root {
+    margin: auto;
+    max-width: 80%;
+}
 
 form {
     background-color: #dbd5d5;
@@ -39,7 +42,7 @@ input[type="submit"] {
     background-color: #f8f8f8;
 } 
 
-.Card {
+/* .Card {
     Width: 100,
-}
 
+} */

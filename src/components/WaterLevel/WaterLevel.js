@@ -22,7 +22,7 @@ class WaterLevel extends Component {
 
   componentWillMount() {
     this.fetchPondLevel();
-    // this.props.dispatch({ type: 'FETCH_TEMP' });
+    // this.props.dispatch({ type: 'FETCH_LEVEL' });
   }
 
   fetchPondLevel = () => {
@@ -32,14 +32,18 @@ class WaterLevel extends Component {
     })
       .then((response) => {
         // alert(response.data.map(temps => temps.tstz))
+        console.log(response.data)
+        
         this.setState({
           chartData: {
             labels: response.data.map((levels) => {
+              
               let levelDate = moment(levels.dt).format('ddd M[/]D');
               return levelDate;
             }),
             datasets: [
               {
+                label: 'Pond Levels',
                 backgroundColor: [
                   'rgba(14, 28, 51, 0.6)',
                   'rgba(54, 162, 235, 0.2)',
@@ -58,13 +62,12 @@ class WaterLevel extends Component {
                   'rgba(255, 159, 64, 1)'
                 ],
                 borderWidth: 2,
-                label: 'Pond Levels',
                 data: response.data.map(levels => levels.avg_level),
               }
             ]
           }
         });
-        // alert(response.data.map(temps => temps.tstz))
+        // console.log(response.data.map(levels => levels.avg_level))
       })
       .catch((error) => {
         console.log(error);
@@ -107,16 +110,16 @@ class WaterLevel extends Component {
                   ticks: {
                     fontSize: 15,
                     fontColor: 'rgba(255, 204, 2, 1)',
-                    min: 30,
-                    max: 100,
-                    stepSize: 5,
+                    min: 0,
+                    max: 10,
+                    stepSize: 1,
                   }
                 }]
               }
             }}
           />
         </div>
-        {/* <pre>{JSON.stringify([this.props.reduxState.temp.tempReducer])}</pre> */}
+        {/* <pre>{JSON.stringify([this.state.chartData])}</pre> */}
       </div>
     );
   }

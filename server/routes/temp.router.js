@@ -12,9 +12,9 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    console.log('Get got got');
+    console.log('Get got temp');
     const queryText = `SELECT CAST("tstz" AS "date") AS "dt", "avg"("temp") AS "avg_temp"
-                       FROM "water_temp"
+                       FROM "temp_level"
                        GROUP BY CAST("tstz" AS "date")
                        ORDER BY CAST("tstz" AS "date") DESC;`;
 
