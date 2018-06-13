@@ -78,7 +78,7 @@ class WaterLevel extends Component {
     return (
       <div>
         <Nav />
-        <div style={{ width: '1000px', height: '600px', margin: '0 auto' }}>
+        <div style={{ width: '90%', height: '800px', margin: '0 auto' }}>
           <Line 
             data={this.state.chartData}
             options={{

@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './nav.css'
 import 'typeface-roboto'
-import { Button } from 'react-bootstrap';
+
 import { triggerLogout } from '../../redux/actions/loginActions';
+import Button from '@material-ui/core/Button';
+
 
 
   
@@ -19,11 +21,6 @@ const Nav = (props) => (
         <li>
           <Link to="/user">
             User Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/info">
-            Info Page
           </Link>
         </li>
         <li>

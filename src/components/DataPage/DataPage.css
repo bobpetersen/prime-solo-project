@@ -1,10 +1,11 @@
-.react-grid-layout {
+/* .react-grid-layout {
   position: relative;
   transition: height 200ms ease;
   height:100%;
+  width: 100%;
 }
 .react-grid-item {
-  background: rgba(14, 28, 51, 0.6);
+  background: #01040a99;
   opacity: 1;
   transition: all 200ms ease;
   transition-property: left, top;
@@ -58,3 +59,6 @@
   border-right: 2px solid rgba(0, 0, 0, 0.4);
   border-bottom: 2px solid rgba(0, 0, 0, 0.4);
 }
+.comboLevel {
+font-size: 50px;
+} */

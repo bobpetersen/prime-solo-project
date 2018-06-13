@@ -6,10 +6,10 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
-import InfoPage from './components/InfoPage/InfoPage';
 import WaterLevel from './components/WaterLevel/WaterLevel';
 import WaterTemp from './components/WaterTemp/WaterTemp';
-import DataPage from './components/DataPage/DataPage';
+// import DataPage from './components/DataPage/DataPage';
+import PocData from './components/DataPage/PocData';
 import './styles/main.css';
 
 const App = () => (
@@ -31,10 +31,7 @@ const App = () => (
           path="/user"
           component={UserPage}
         />
-        <Route
-          path="/info"
-          component={InfoPage}
-        />
+
         <Route
           path="/temps"
           component={WaterTemp}
@@ -45,8 +42,12 @@ const App = () => (
         />
         <Route
           path="/data"
-          component={DataPage}
+          component={PocData}
         />
+        {/* <Route
+          path="/data"
+          component={DataPage}
+        /> */}
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 

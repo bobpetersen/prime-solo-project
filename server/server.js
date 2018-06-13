@@ -15,6 +15,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const tempRouter = require('./routes/temp.router');
 const levelRouter = require('./routes/level.router');
+const currentTempRouter = require('./routes/currentTemp.router');
+const currentLevelRouter = require('./routes/currentLevel.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -46,7 +48,11 @@ function requestDataFromCore() {
       
     const queryText = `INSERT INTO "temp_level" ("temp", "level", "tstz")
                          VALUES ($1, $2, now());`;
-    pool.query(queryText, [parseInt(myData.temp), parseInt(myData.level +7)])
+    const minValue = 40; // Min value should be ~40
+    const actualReading = parseFloat(myData.level); // between -0.4 and -0.6 or higher
+    // Math.abs always returns a positive number
+    const waterReading = Math.abs(Math.floor(actualReading * 100)) - minValue; // Taking a small decimal and converting to 0 - 20
+    pool.query(queryText, [parseFloat(myData.temp), waterReading]) 
         .then((results) => {
           console.log(results);
         })
@@ -74,6 +80,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/temps', tempRouter);
 app.use('/api/level', levelRouter);
+app.use('/api/currentTemp', currentTempRouter);
+app.use('/api/currentLevel', currentLevelRouter);
 
 // Serve static files
 app.use(express.static('build'));

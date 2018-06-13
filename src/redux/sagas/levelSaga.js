@@ -1,7 +1,7 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 import { LEVEL_ACTIONS } from '../actions/levelActions';
-// worker Saga: will be fired on "FETCH_USER" actions
+
 function* fetchLevels() {
     console.log('fetch levels')
     try {

@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
-// import PropTypes from 'prop-types';
-// import { withStyles } from '@material-ui/core/styles';
-import GridLayout from 'react-grid-layout';
-// import { Responsive as ResponsiveGridLayout } from 'react-grid-layout';
+import PropTypes from 'prop-types';
 import './DataPage.css';
 import './resizable-styles.css';
-// import WaterLevel from '../../components/WaterLevel/WaterLevel';
+import { Sparklines, SparklinesBars } from 'react-sparklines';
 import axios from 'axios';
+import { Line } from 'react-chartjs-2';
 
 
 
@@ -17,12 +15,20 @@ const mapStateToProps = reduxState => ({
 });
 
 class DataPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      waterData: '',
+  constructor(props){
+    superprops(props);
+      this.state = {
+      waterLevel: "",
     }
   }
+  static propTypes = {
+    points: PropTypes.arrayOf(PropTypes.object),
+    height: PropTypes.number,
+    style: PropTypes.object,
+    barWidth: PropTypes.number,
+    margin: PropTypes.number,
+    onMouseMove: PropTypes.func,
+  };
 
   componentWillMount() {
     this.fetchPondLevel();
@@ -48,43 +54,40 @@ class DataPage extends Component {
   }
 
   render() {
-    const layout = [
-      { i: 'a', x: 3, y: 3, w: 2, h: 3 },
-      { i: 'b', x: 0, y: 0, w: 3, h: 3 },
-      { i: 'c', x: 4, y: 0, w: 4, h: 2 },
-      { i: 'd', x: 4, y: 0, w: 4, h: 2 },
-      { i: 'e', x: 0, y: 0, w: 2, h: 4 },
-      { i: 'f', x: 4, y: 0, w: 2, h: 4 },
-      { i: 'g', x: 4, y: 0, w: 4, h: 2 },
-      { i: 'h', x: 4, y: 0, w: 4, h: 2 },
-    ];
-
-
-
+    const { points, height, style, barWidth, margin, onMouseMove } = this.props;
+    const strokeWidth = 1 * ((style && style.strokeWidth) || 0);
+    const marginWidth = margin ? 2 * margin : 0;
+    const width =
+      barWidth ||
+      (points && points.length >= 2
+        ? Math.max(0, points[1].x - points[0].x - strokeWidth - marginWidth)
+        : 0);
+        
     return (
-    <div>
-        <div>
-          <Nav />
-        </div>
-      
-        <GridLayout className="layout" layout={layout} cols={12} rowHeight={30} width={1400}>
-          <div key="a">
-          <p>
-          TESTING
-          </p>
-          </div>
-          <div key="b">Latest Average Water Level <p>{parseFloat(this.state.waterData)}</p></div>
-          <div key="c">c</div>
-          <div key="d">d</div>
-          <div key="e">e</div>
-          <div key="f">f</div>
-          <div key="g">g</div>
-          <div key="h">h</div>
-          <div>
 
-            </div>
-        </GridLayout>
-     </div>
+      <div>
+      <div>
+        <Nav />
+      </div>
+        <Sparklines data={[5, 10, 5, 20]}>
+          <g transform="scale(1,-1)">
+            {points.map((p, i) =>
+              <rect
+                key={i}
+                x={p.x - (width + strokeWidth) / 2}
+                y={-height}
+                width={width}
+                height={Math.max(0, height - p.y)}
+                style={style}
+                onMouseMove={onMouseMove && onMouseMove.bind(this, p)}
+              />,
+            )}
+          </g>
+          <SparklinesBars />
+        </Sparklines>
+      </div>
+
+       
     );
   }
 

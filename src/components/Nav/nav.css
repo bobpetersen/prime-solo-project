@@ -46,3 +46,9 @@ li a:hover {
     text-decoration: underline;
     color: #eee;
 }
+ 
+.pull-right {
+    float: right;
+    padding-right: 5%;
+    padding-top: 5px;
+}

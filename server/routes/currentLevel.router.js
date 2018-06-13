@@ -7,11 +7,10 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    console.log('Get AVG level');
-    const queryText = `SELECT CAST("tstz" AS "date") AS "dt", "avg"("level") AS "avg_level"
+    console.log('Get CURRENT level');
+    const queryText = `SELECT "level"
                        FROM "temp_level"
-                       GROUP BY CAST("tstz" AS "date")
-                       ORDER BY CAST("tstz" AS "date") ASC;`;
+                       LIMIT 1;`;
     pool.query(queryText)
         .then((results) => {
             res.send(results.rows);
@@ -22,5 +21,8 @@ router.get('/', (req, res) => {
         }
         )
 });
+
+
+
 
 module.exports = router;

@@ -40,19 +40,19 @@ class WaterTemp extends Component {
             }),
             datasets: [
               {
-              label: 'Pond Temps',
-              backgroundColor: [
-                'rgba(14, 28, 51, 0.6)',
-                'rgba(53, 143, 255, 0.5)',
-              ],
-              borderColor: [
-                'rgba(255, 204, 2, 1)',
-                'rgba(219, 52, 10, 1)',
-              ],
-              borderWidth: 2,
-              data: response.data.map(temps => temps.avg_temp),
-            },
-          ]
+                label: 'Pond Temps',
+                backgroundColor: [
+                  'rgba(14, 28, 51, 0.6)',
+                  'rgba(53, 143, 255, 0.5)',
+                ],
+                borderColor: [
+                  'rgba(255, 204, 2, 1)',
+                  'rgba(219, 52, 10, 1)',
+                ],
+                borderWidth: 2,
+                data: response.data.map(temps => temps.avg_temp),
+              },
+            ]
           }
         });
         // console.log(response.data.map(temps => temps.tstz))
@@ -66,7 +66,7 @@ class WaterTemp extends Component {
     return (
       <div>
         <Nav />
-        <div style={{ width: '1000px', height: '600px', margin: '0 auto' }}>
+        <div style={{ width: '90%', height: '800px', margin: '0 auto' }}>
           <Line
             data={this.state.chartData}
             options={{
