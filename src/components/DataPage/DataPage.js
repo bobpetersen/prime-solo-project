@@ -6,7 +6,7 @@ import './DataPage.css';
 import './resizable-styles.css';
 import { Sparklines, SparklinesBars } from 'react-sparklines';
 import axios from 'axios';
-import { Line } from 'react-chartjs-2';
+
 
 
 

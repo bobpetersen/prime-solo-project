@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './nav.css'
 import 'typeface-roboto'
-
 import { triggerLogout } from '../../redux/actions/loginActions';
 import Button from '@material-ui/core/Button';
 

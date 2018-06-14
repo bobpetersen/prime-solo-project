@@ -6,6 +6,7 @@ import 'typeface-roboto'
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 
+
 const mapStateToProps = reduxState => ({
   reduxState,
 });
@@ -110,7 +111,7 @@ class WaterLevel extends Component {
                     fontSize: 15,
                     fontColor: 'rgba(255, 204, 2, 1)',
                     min: 0,
-                    max: 30,
+                    max: 24,
                     stepSize: 2,
                   }
                 }]

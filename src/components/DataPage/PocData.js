@@ -25,6 +25,7 @@ const CustomTableCell = withStyles(theme => ({
   body: {
     fontSize: 16,
     color: '#FFCC02',
+   
   },
 }))(TableCell);
 
@@ -33,9 +34,11 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
+    paddingLeft: 500,
   },
   table: {
     minWidth: 700,
+    
   },
   row: {
     '&:nth-of-type(odd)': {
@@ -81,7 +84,7 @@ class PocData extends Component {
         {/* <TableCell><Button onClick={() => { this.deleteFeedback(feedback.id) }}><Delete /></Button></TableCell> */}
       </TableRow>
     })
-    const customColumnStyle = { width: 12};
+    
     return (
 
       <div>
@@ -91,7 +94,7 @@ class PocData extends Component {
             <header>
             </header>
             <Paper>
-              <Table style={{ backgroundColor: '#081B33'}}>
+              <Table style={{ backgroundColor: '#081B33', paddingLeft: 500,}}>
                 <TableHead>
                   <TableRow >
                     <CustomTableCell>Date</CustomTableCell>
