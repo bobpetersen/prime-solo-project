@@ -90,7 +90,7 @@ class WaterTemp extends Component {
                     fontColor: 'rgba(255, 204, 2, 1)',
                     fontSize: 15,
                     min: 50,
-                    max: 80,
+                    max: 90,
                     stepSize: 2,
                   }
                 }],

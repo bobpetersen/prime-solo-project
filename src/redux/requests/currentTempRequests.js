@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getCurrentTemps() {
+export function getCurrentTemp() {
     const config = {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,

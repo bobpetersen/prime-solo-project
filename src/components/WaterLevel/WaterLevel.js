@@ -37,7 +37,6 @@ class WaterLevel extends Component {
         this.setState({
           chartData: {
             labels: response.data.map((levels) => {
-              
               let levelDate = moment(levels.dt).format('ddd M[/]D');
               return levelDate;
             }),
@@ -111,8 +110,8 @@ class WaterLevel extends Component {
                     fontSize: 15,
                     fontColor: 'rgba(255, 204, 2, 1)',
                     min: 0,
-                    max: 10,
-                    stepSize: 1,
+                    max: 30,
+                    stepSize: 2,
                   }
                 }]
               }

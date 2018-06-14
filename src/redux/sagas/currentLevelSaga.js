@@ -16,9 +16,8 @@ function* fetchCurrentLevel() {
     };
 }
 
-
 function* currentLevelSaga() {
-    yield takeEvery(CURRENT_LEVEL_ACTIONS.FETCH_LEVEL, fetchCurrentLevel);
+    yield takeEvery(CURRENT_LEVEL_ACTIONS.FETCH_CURRENT_LEVEL, fetchCurrentLevel);
 }
 
 export default currentLevelSaga;

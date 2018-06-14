@@ -8,10 +8,10 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     console.log('Get CURRENT temp');
-    const queryText = `SELECT "temp"
+    const queryText = `SELECT "temp", "level", "tstz" 
                        FROM "temp_level"
-                       LIMIT 1;`;
-
+                       ORDER BY "tstz" DESC
+                       LIMIT 10;`;
     pool.query(queryText)
         .then((results) => {
             res.send(results.rows);
