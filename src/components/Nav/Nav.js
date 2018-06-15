@@ -4,24 +4,22 @@ import { connect } from 'react-redux';
 import './nav.css'
 import 'typeface-roboto'
 import { triggerLogout } from '../../redux/actions/loginActions';
-import Button from '@material-ui/core/Button';
 
-
-
-  
-  // this.props.history.push('home');
-
+ // this.props.history.push('home'
 const Nav = (props) => (
-  
-
 <div className="navbar">
     <div>
       <ul>
         <li>
+          <Link to="/data">
+            Data Page
+          </Link>
+        </li>
+        {/* <li>
           <Link to="/user">
             User Home
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/temps">
             Water Temp
@@ -32,11 +30,11 @@ const Nav = (props) => (
             Water Level
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/data">
             Data Page
           </Link>
-        </li>
+        </li> */}
         <div className="pull-right">
         <li>
           <a className="navBara"

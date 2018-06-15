@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
+// import PropTypes from 'prop-types';
+// import Typography from '@material-ui/core/Typography';
 import moment from 'moment'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -30,23 +30,6 @@ const CustomTableCell = withStyles(theme => ({
   },
 }))(TableCell);
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-    paddingLeft: 500,
-  },
-  table: {
-    minWidth: 700,
-    
-  },
-  row: {
-    '&:nth-of-type(odd)': {
-      // backgroundColor: '#081B33',
-    },
-  },
-});
 
 class PocData extends Component {
   constructor(props) {
@@ -88,14 +71,14 @@ class PocData extends Component {
     
     return (
      
-        <div>
+        <div >
           <Nav />
-          <div>
+          <div className="grid-container" >
             <header>
             </header>
-            <Paper>
-            <Table >
-                <TableHead>
+          {/* <Paper background-color="#00112b" class="table-container"> */}
+            <Table>
+              <TableHead>
                   <TableRow >
                     <CustomTableCell>Date</CustomTableCell>
                     <CustomTableCell>Water Temp</CustomTableCell>
@@ -108,10 +91,11 @@ class PocData extends Component {
                   {resultsRow}
                 </TableBody>
               </Table>
-            </Paper>
+            {/* </Paper> */}
             {/* <pre>{JSON.stringify(this.props.reduxState)}</pre> */}
           </div>
           </div>
+        
           );
         }
       }

@@ -24,6 +24,8 @@ class WaterTemp extends Component {
     // this.props.dispatch({ type: 'FETCH_TEMP' });
   }
 
+  // const fontColor = 'rgba(255, 204, 2, 1)';
+
   fetchPondTemps = () => {
     axios({
       method: 'GET',
@@ -59,7 +61,6 @@ class WaterTemp extends Component {
                 backgroundColor: [
                   'rgba(53, 143, 255, 0.5)',
                   'rgba(14, 28, 51, 0.6)',
-                  ,
                 ],
                 borderColor: [
                   'rgba(255, 204, 2, 1)',
@@ -86,7 +87,6 @@ class WaterTemp extends Component {
                 backgroundColor: [
                   'rgba(106	168	148, 0.5)',
                   'rgba(14, 28, 51, 0.6)',
-                  ,
                 ],
                 borderColor: [
                   'rgba(255, 204, 2, 1)',

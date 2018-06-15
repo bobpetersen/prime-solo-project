@@ -4,24 +4,10 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import Nav from '../../components/Nav/Nav';
 import './UserPage.css';
-import Grid from '@material-ui/core/Grid';
-
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import { Button } from 'react-bootstrap';
-import Typography from '@material-ui/core/Typography';
-import Image from '../Images/pond-one.png';
-import Pic from '../Images/pond_two.png';
-
-
 
 const mapStateToProps = state => ({
   user: state.user,
 });
-
-
 
 class UserPage extends Component {
   constructor(props) {
@@ -47,8 +33,6 @@ class UserPage extends Component {
   }
 
   render() {
-    const { classes } = this.props;
-    // const { spacing } = this.state;
 
     let content = null;
 
@@ -66,12 +50,10 @@ class UserPage extends Component {
                 <div class="item5">5</div>
                 <div class="item6">6</div>
             </div>
-
       </div>
     )
   }
 }
 
-// export default connect(mapStateToProps)(withStyles(styles)(UserPage));
 export default connect(mapStateToProps)(UserPage);
 

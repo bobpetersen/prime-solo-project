@@ -82,6 +82,9 @@ app.use('/api/temps', tempRouter);
 app.use('/api/level', levelRouter);
 app.use('/api/currentTemp', currentTempRouter);
 app.use('/api/currentLevel', currentLevelRouter);
+app.get('/*', (req, res) => {
+  res.sendFile('/app/build/index.html');
+});
 
 // Serve static files
 app.use(express.static('build'));
