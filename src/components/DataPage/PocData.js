@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-// import PropTypes from 'prop-types';
-// import Typography from '@material-ui/core/Typography';
 import moment from 'moment'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -30,7 +28,6 @@ const CustomTableCell = withStyles(theme => ({
   },
 }))(TableCell);
 
-
 class PocData extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +53,7 @@ class PocData extends Component {
       console.log('error with GET current');
     })
   }
-
+  
   render() {
     let resultsRow = this.state.results.map((allData, {i}) => {
       return <TableRow style={{ backgroundColor: '#081B33' }} key={i}>
@@ -70,7 +67,7 @@ class PocData extends Component {
     })
     
     return (
-     
+     <div>
         <div >
           <Nav />
           <div className="grid-container" >
@@ -95,11 +92,9 @@ class PocData extends Component {
             {/* <pre>{JSON.stringify(this.props.reduxState)}</pre> */}
           </div>
           </div>
-        
+        </div>
           );
         }
       }
-      
-
-      
+         
 export default connect(mapStateToProps)(PocData);
