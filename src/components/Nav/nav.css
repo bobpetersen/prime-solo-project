@@ -11,6 +11,7 @@
   border-radius: 0px;
   padding: 0;
   font-family: sans-serif;
+  
 } 
 
 .instructions h1 {
@@ -18,7 +19,7 @@
     font-weight: 700;
     padding: 2%;
     font-family: sans-serif;
-    color: #837a4a;
+    color: rgb(119, 105, 86);
 }
 
 .instructions {
@@ -42,7 +43,7 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: #a19d89;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

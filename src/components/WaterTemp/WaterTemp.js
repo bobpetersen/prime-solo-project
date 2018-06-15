@@ -40,8 +40,10 @@ class WaterTemp extends Component {
             }),
             datasets: [
               {
-                label: 'Pond Temps',
+                label: 'Pond Temp',
                 backgroundColor: [
+                  'rgba(14, 28, 51, 0.6)',
+                  'rgba(53, 143, 255, 0.5)',
                   'rgba(14, 28, 51, 0.6)',
                   'rgba(53, 143, 255, 0.5)',
                 ],
@@ -51,6 +53,47 @@ class WaterTemp extends Component {
                 ],
                 borderWidth: 2,
                 data: response.data.map(temps => temps.avg_temp),
+              },
+              {
+                label: 'Pool Temp',
+                backgroundColor: [
+                  'rgba(53, 143, 255, 0.5)',
+                  'rgba(14, 28, 51, 0.6)',
+                  ,
+                ],
+                borderColor: [
+                  'rgba(255, 204, 2, 1)',
+                  'rgba(219, 52, 10, 1)',
+                ],
+                borderWidth: 2,
+                // data: response.data.map(temps => temps.avg_temp),
+              },
+              {
+                label: 'Reef Tank',
+                backgroundColor: [
+                  'rgba(14, 28, 51, 0.6)',
+                  'rgba(53, 143, 255, 0.5)',
+                ],
+                borderColor: [
+                  'rgba(255, 204, 2, 1)',
+                  'rgba(219, 52, 10, 1)',
+                ],
+                borderWidth: 2,
+                // data: response.data.map(temps => temps.avg_temp),
+              },
+              {
+                label: 'Fin the Goldfish',
+                backgroundColor: [
+                  'rgba(106	168	148, 0.5)',
+                  'rgba(14, 28, 51, 0.6)',
+                  ,
+                ],
+                borderColor: [
+                  'rgba(255, 204, 2, 1)',
+                  'rgba(219, 52, 10, 1)',
+                ],
+                borderWidth: 2,
+                // data: response.data.map(temps => temps.avg_temp),
               },
             ]
           }
