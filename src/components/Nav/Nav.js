@@ -39,12 +39,11 @@ const Nav = (props) => (
         </li>
         <div className="pull-right">
         <li>
-          <Button className="navBarButton"
-            variant="contained" color="default"
+          <a className="navBara"
               onClick={() => props.dispatch(triggerLogout())}
           >
             Log Out
-          </Button>
+          </a>
         </li>
         </div>
       </ul>
