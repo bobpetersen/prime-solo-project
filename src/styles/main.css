@@ -12,7 +12,7 @@ form {
     height: 250px;
     margin: 20px auto;
     padding: 25px;
-    border-radius: 2px;
+    /* border-radius: 2px; */
 }
 
 input {
@@ -38,6 +38,6 @@ input[type="submit"] {
 
 .message:nth-child(even) {
     background-color: #f8f8f8;
-} 
+}  
 
 

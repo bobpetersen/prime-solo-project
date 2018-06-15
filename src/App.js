@@ -11,6 +11,7 @@ import WaterTemp from './components/WaterTemp/WaterTemp';
 // import DataPage from './components/DataPage/DataPage';
 import PocData from './components/DataPage/PocData';
 import './styles/main.css';
+import 'typeface-roboto'
 
 const App = () => (
   

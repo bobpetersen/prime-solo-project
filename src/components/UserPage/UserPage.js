@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Nav from '../../components/Nav/Nav';
+import './UserPage.css';
 import Grid from '@material-ui/core/Grid';
 
 import Card from '@material-ui/core/Card';
@@ -22,16 +21,6 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-const styles = {
-  card: {
-    width: 300,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-
-};
 
 
 class UserPage extends Component {
@@ -63,87 +52,26 @@ class UserPage extends Component {
 
     let content = null;
 
-    if (this.props.user.userName) {
-      content = (
-        <div>
-          <h1
-            id="welcome"
-          >
-            Welcome, {this.props.user.userName}!
-          </h1>
-        </div>
-      );
-    }
-
     return (
       <div>
         <Nav />
         {content}
-        <Grid direction='row' spacing='48' container className={classes.root} >
-          <Grid item lg={3}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image={Image}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="display3">
-                  Water Temperature
-                </Typography>
-                <Typography component="p">
-                  Lizards are a widespread group
-                  of squamate reptiles, with over 6,000 species,
-                  ranging
-                  across all continents except Antarctica
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Share
-                </Button>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item lg={3}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image={Pic}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="display3">
-                  Water Level
-                </Typography>
-                <Typography component="p">
-                  Lizards are a widespread group
-                  of squamate reptiles, with over 6,000 species,
-                  ranging
-                  across all continents except Antarctica
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Share
-                  </Button>
-                <Button size="small" color="primary">
-                  Learn More
-                  </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        </Grid>
+            <div class="grid-container">
+                <div class="item1">1</div>
+                <div class="item2">       
+                    <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
+                </div>
+                <div class="item3">3</div>
+                <div class="item4">4</div>
+                <div class="item5">5</div>
+                <div class="item6">6</div>
+            </div>
+
       </div>
     )
   }
 }
 
-
-Card.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default connect(mapStateToProps)(withStyles(styles)(UserPage));
+// export default connect(mapStateToProps)(withStyles(styles)(UserPage));
+export default connect(mapStateToProps)(UserPage);
 

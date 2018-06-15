@@ -12,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Nav from '../../components/Nav/Nav';
 import axios from 'axios';
+import './dataPage.css';
 
 const mapStateToProps = reduxState => ({
   reduxState,
@@ -42,7 +43,7 @@ const styles = theme => ({
   },
   row: {
     '&:nth-of-type(odd)': {
-      backgroundColor: '#081B33',
+      // backgroundColor: '#081B33',
     },
   },
 });
@@ -75,7 +76,7 @@ class PocData extends Component {
 
   render() {
     let resultsRow = this.state.results.map((allData, {i}) => {
-      return <TableRow key={i}>
+      return <TableRow style={{ backgroundColor: '#081B33' }} key={i}>
         <CustomTableCell>{moment(allData.tstz).format('ddd M[/]D, h:mm')}</CustomTableCell>
         <CustomTableCell>{allData.temp}</CustomTableCell>
         <CustomTableCell>{allData.level}</CustomTableCell>
@@ -86,22 +87,21 @@ class PocData extends Component {
     })
     
     return (
-
-      <div>
+     
         <div>
           <Nav />
           <div>
             <header>
             </header>
             <Paper>
-              <Table style={{ backgroundColor: '#081B33', paddingLeft: 500,}}>
+            <Table >
                 <TableHead>
                   <TableRow >
                     <CustomTableCell>Date</CustomTableCell>
                     <CustomTableCell>Water Temp</CustomTableCell>
                     <CustomTableCell>Water Level</CustomTableCell>
-                    {/* <TableCell>Comments</TableCell>
-                    <TableCell>Delete</TableCell> */}
+                    {/* <TableCell>Air Temp</TableCell> */}
+                    {/* <TableCell>Delete</TableCell> */}
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -110,7 +110,6 @@ class PocData extends Component {
               </Table>
             </Paper>
             {/* <pre>{JSON.stringify(this.props.reduxState)}</pre> */}
-          </div>
           </div>
           </div>
           );

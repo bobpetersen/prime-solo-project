@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     const queryText = `SELECT "temp", "level", "tstz" 
                        FROM "temp_level"
                        ORDER BY "tstz" DESC
-                       LIMIT 10;`;
+                       LIMIT 20;`;
     pool.query(queryText)
         .then((results) => {
             res.send(results.rows);
