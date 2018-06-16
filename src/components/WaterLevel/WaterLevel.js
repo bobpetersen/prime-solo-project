@@ -1,29 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { triggerLogout } from '../../redux/actions/loginActions';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 import moment from 'moment';
 import Nav from '../../components/Nav/Nav';
 import 'typeface-roboto'
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 
-
 const mapStateToProps = reduxState => ({
+  user:reduxState.user,
   reduxState,
 });
-
 
 class WaterLevel extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       chartData: {},
     }
   }
 
+  componentDidMount() {
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+  }
+
+  componentDidUpdate() {
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('home');
+    }
+  }
+
+  logout = () => {
+    this.props.dispatch(triggerLogout());
+  }
+
   componentWillMount() {
     this.fetchPondLevel();
-    // this.props.dispatch({ type: 'FETCH_LEVEL' });
   }
 
   fetchPondLevel = () => {
@@ -67,7 +80,6 @@ class WaterLevel extends Component {
             ]
           }
         });
-        // console.log(response.data.map(levels => levels.avg_level))
       })
       .catch((error) => {
         console.log(error);

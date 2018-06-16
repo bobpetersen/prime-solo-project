@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { triggerLogout } from '../../redux/actions/loginActions';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Nav from '../../components/Nav/Nav';
@@ -6,25 +8,38 @@ import 'typeface-roboto'
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 
+// const mapStateToProps = reduxState => ({
+//   reduxState,
 const mapStateToProps = reduxState => ({
+  user: reduxState.user,
   reduxState,
 });
 
 class WaterTemp extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       chartData: {},
     }
   }
 
-  componentWillMount() {
-    this.fetchPondTemps();
-    // this.props.dispatch({ type: 'FETCH_TEMP' });
+  componentDidMount() {
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
-  // const fontColor = 'rgba(255, 204, 2, 1)';
+  componentDidUpdate() {
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('home');
+    }
+  }
+
+  logout = () => {
+    this.props.dispatch(triggerLogout());
+  }
+
+  componentWillMount() {
+    this.fetchPondTemps();
+  }
 
   fetchPondTemps = () => {
     axios({
@@ -32,8 +47,6 @@ class WaterTemp extends Component {
       url: `/api/temps`
     })
       .then((response) => {
-        //drop axios here
-        // console.log(response.data.map(temps => temps.tstz))
         this.setState({
           chartData: {
             labels: response.data.map((temps) => {

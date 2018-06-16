@@ -29,17 +29,12 @@ class UserPage extends Component {
 
   logout = () => {
     this.props.dispatch(triggerLogout());
-    // this.props.history.push('home');
   }
 
   render() {
-
-    let content = null;
-
     return (
       <div>
         <Nav />
-        {content}
             <div class="grid-container">
                 <div class="item1">1</div>
                 <div class="item2">       

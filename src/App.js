@@ -8,7 +8,7 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import WaterLevel from './components/WaterLevel/WaterLevel';
 import WaterTemp from './components/WaterTemp/WaterTemp';
-// import DataPage from './components/DataPage/DataPage';
+import InfoPage from './components/InfoPage/InfoPage';
 import PocData from './components/DataPage/PocData';
 import './styles/main.css';
 import 'typeface-roboto'
@@ -45,10 +45,10 @@ const App = () => (
           path="/data"
           component={PocData}
         />
-        {/* <Route
-          path="/data"
-          component={DataPage}
-        /> */}
+        <Route
+          path="/info"
+          component={InfoPage}
+        />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 

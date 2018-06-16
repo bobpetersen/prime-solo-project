@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { triggerLogout } from '../../redux/actions/loginActions';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 import moment from 'moment'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Nav from '../../components/Nav/Nav';
 import axios from 'axios';
 import './dataPage.css';
 
 const mapStateToProps = reduxState => ({
+  user: reduxState.user,
   reduxState,
 });
 
@@ -34,6 +36,20 @@ class PocData extends Component {
     this.state = {
       results: [],
     };
+  }
+
+  componentDidMount() {
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+  }
+
+  componentDidUpdate() {
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('home');
+    }
+  }
+
+  logout = () => {
+    this.props.dispatch(triggerLogout());
   }
 
   componentWillMount() {

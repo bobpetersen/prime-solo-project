@@ -5,7 +5,6 @@ import './nav.css'
 import 'typeface-roboto'
 import { triggerLogout } from '../../redux/actions/loginActions';
 
- // this.props.history.push('home'
 const Nav = (props) => (
 <div className="navbar">
     <div>
@@ -15,11 +14,11 @@ const Nav = (props) => (
             Data Page
           </Link>
         </li>
-        {/* <li>
+        <li>
           <Link to="/user">
             User Home
           </Link>
-        </li> */}
+        </li>
         <li>
           <Link to="/temps">
             Water Temp
@@ -30,14 +29,14 @@ const Nav = (props) => (
             Water Level
           </Link>
         </li>
-        {/* <li>
-          <Link to="/data">
-            Data Page
+        <li>
+          <Link to="/info">
+            Info Page
           </Link>
-        </li> */}
+        </li>
         <div className="pull-right">
         <li>
-          <a className="navBara"
+            <a className="navBarButton"
               onClick={() => props.dispatch(triggerLogout())}
           >
             Log Out
@@ -48,7 +47,5 @@ const Nav = (props) => (
     </div>
   </div>
 );
-
-
 
 export default connect()(Nav);
