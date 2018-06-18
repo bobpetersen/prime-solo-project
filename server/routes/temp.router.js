@@ -16,7 +16,8 @@ router.get('/', (req, res) => {
     const queryText = `SELECT CAST("tstz" AS "date") AS "dt", "avg"("temp") AS "avg_temp"
                        FROM "temp_level"
                        GROUP BY CAST("tstz" AS "date")
-                       ORDER BY CAST("tstz" AS "date") DESC;`;
+                       ORDER BY CAST("tstz" AS "date") DESC
+                       LIMIT 15;`;
 
     pool.query(queryText)
         .then((results) => {

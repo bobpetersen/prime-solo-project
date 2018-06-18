@@ -70,7 +70,7 @@ class WaterTemp extends Component {
                 data: response.data.map(temps => temps.avg_temp),
               },
               {
-                label: 'Pool Temp',
+                label: 'Air Temp',
                 backgroundColor: [
                   'rgba(53, 143, 255, 0.5)',
                   'rgba(14, 28, 51, 0.6)',
@@ -80,34 +80,34 @@ class WaterTemp extends Component {
                   'rgba(219, 52, 10, 1)',
                 ],
                 borderWidth: 2,
-                // data: response.data.map(temps => temps.avg_temp),
+                data: [80 ,88 ,86 ,93 ,82 ,81 ,81 ,73 ,77 ,75 ,75 ,79 ,79 ,81 ,88],
               },
-              {
-                label: 'Reef Tank',
-                backgroundColor: [
-                  'rgba(14, 28, 51, 0.6)',
-                  'rgba(53, 143, 255, 0.5)',
-                ],
-                borderColor: [
-                  'rgba(255, 204, 2, 1)',
-                  'rgba(219, 52, 10, 1)',
-                ],
-                borderWidth: 2,
-                // data: response.data.map(temps => temps.avg_temp),
-              },
-              {
-                label: 'Fin the Goldfish',
-                backgroundColor: [
-                  'rgba(106	168	148, 0.5)',
-                  'rgba(14, 28, 51, 0.6)',
-                ],
-                borderColor: [
-                  'rgba(255, 204, 2, 1)',
-                  'rgba(219, 52, 10, 1)',
-                ],
-                borderWidth: 2,
-                // data: response.data.map(temps => temps.avg_temp),
-              },
+              // {
+              //   label: 'Reef Tank',
+              //   backgroundColor: [
+              //     'rgba(14, 28, 51, 0.6)',
+              //     'rgba(53, 143, 255, 0.5)',
+              //   ],
+              //   borderColor: [
+              //     'rgba(255, 204, 2, 1)',
+              //     'rgba(219, 52, 10, 1)',
+              //   ],
+              //   borderWidth: 2,
+              //   // data: response.data.map(temps => temps.avg_temp),
+              // },
+              // {
+              //   label: 'Fin the Goldfish',
+              //   backgroundColor: [
+              //     'rgba(106	168	148, 0.5)',
+              //     'rgba(14, 28, 51, 0.6)',
+              //   ],
+              //   borderColor: [
+              //     'rgba(255, 204, 2, 1)',
+              //     'rgba(219, 52, 10, 1)',
+              //   ],
+              //   borderWidth: 2,
+              //   // data: response.data.map(temps => temps.avg_temp),
+              // },
             ]
           }
         });
@@ -146,7 +146,7 @@ class WaterTemp extends Component {
                     fontColor: 'rgba(255, 204, 2, 1)',
                     fontSize: 15,
                     min: 50,
-                    max: 90,
+                    max: 100,
                     stepSize: 2,
                   }
                 }],

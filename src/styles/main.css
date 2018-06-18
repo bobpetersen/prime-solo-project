@@ -7,10 +7,13 @@ html, body {
 }
 
 form {
-    background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
-    margin: 20px auto;
+    background-color: #163d77;
+    color: #ffcc02;
+    text-align: center;
+    font-family: sans-serif;
+    width: 20%;
+    height: auto;
+    margin: 40px auto;
     padding: 25px;
     /* border-radius: 2px; */
 }

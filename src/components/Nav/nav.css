@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    display: -ms-grid; 
+    /* display: -ms-grid;  */
 }
 
 .navbar {
@@ -69,4 +69,8 @@ li a:hover {
     font-family: sans-serif;
     font-size: 16px;
     color: rgb(119, 105, 86);
+}
+
+.form {
+    background-color: #163d77;
 }

@@ -11,14 +11,14 @@ const Nav = (props) => (
       <ul>
         <li>
           <Link to="/data">
-            Data Page
+            Home Page
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/user">
             User Home
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/temps">
             Water Temp
@@ -29,11 +29,11 @@ const Nav = (props) => (
             Water Level
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/info">
             Info Page
           </Link>
-        </li>
+        </li> */}
         <div className="pull-right">
         <li>
             <a className="navBarButton"

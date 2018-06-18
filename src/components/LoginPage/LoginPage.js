@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
+import '../Nav/nav.css'
+import Button from '@material-ui/core/Button';
+
 
 
 const mapStateToProps = state => ({
@@ -26,7 +29,7 @@ class LoginPage extends Component {
   
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.userName) {
-      this.props.history.push('/user');
+      this.props.history.push('/data');
     }
   }
 
@@ -67,6 +70,9 @@ class LoginPage extends Component {
         <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
+            <div>
+            <br/>
+              </div>
             <label htmlFor="username">
               Username:
               <input
@@ -94,7 +100,7 @@ class LoginPage extends Component {
               name="submit"
               value="Log In"
             />
-            <Link to="/register">Register</Link>
+            <a to="/register">Register</a>
           </div>
         </form>
       </div>

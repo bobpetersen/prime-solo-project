@@ -86,17 +86,16 @@ class PocData extends Component {
      <div>
         <div >
           <Nav />
-          <div className="grid-container" >
+          <div className="grid-container">
             <header>
-            </header>
-          {/* <Paper background-color="#00112b" class="table-container"> */}
+            </header>          {/* <Paper background-color="#00112b" class="table-container"> */}
             <Table>
               <TableHead>
                   <TableRow >
                     <CustomTableCell>Date</CustomTableCell>
                     <CustomTableCell>Water Temp</CustomTableCell>
                     <CustomTableCell>Water Level</CustomTableCell>
-                    {/* <TableCell>Air Temp</TableCell> */}
+                  {/* <CustomTableCell>Air Temp</CustomTableCell> */}
                     {/* <TableCell>Delete</TableCell> */}
                   </TableRow>
                 </TableHead>
@@ -104,13 +103,12 @@ class PocData extends Component {
                   {resultsRow}
                 </TableBody>
               </Table>
-            {/* </Paper> */}
-            {/* <pre>{JSON.stringify(this.props.reduxState)}</pre> */}
           </div>
           </div>
         </div>
+
           );
         }
-      }
+}
          
 export default connect(mapStateToProps)(PocData);

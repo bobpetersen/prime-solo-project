@@ -1,13 +1,38 @@
-.grid-container {
+
+.flex-container {
+  /* margin-right: 20px; */
   display: grid;
-  grid-template: 730px / auto auto auto;
+  flex-wrap: wrap;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 320px 320px 320px;
   grid-gap: 10px;
-  /* background-color: #00112b; */
   padding: 10px;
+  justify-content: center;
 }
-.grid-container>div {
+.flex-container>div {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  padding:20px 0;
+  padding:10px 10px;
   font-size: 30px;
+}
+.img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.item1 {
+ grid-area: 1 / 2 / 3 / 2;
+}
+
+.item3 {
+    background-image: url(../Images/pond-one.png);
+    overflow: hidden;
+    max-height: 100%;
+    max-width: 100%;
+
+
+}
+
+.item4 {
+  background-image: url(../Images/pond_two.png)
 }
